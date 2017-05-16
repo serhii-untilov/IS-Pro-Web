@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Register</title>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet"
+          media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <link href="../static/css/style.css"
+          th:href="@{css/style.css}"
+          rel="stylesheet"
+          media="screen"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
+        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+            <form class="form"
+                  action="/newuser"
+                  method="POST">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}"/>
+                <h2>Register new user</h2>
+                <div th:if="${exists}"
+                     class="alert alert-warning">
+                    <strong>Warning!</strong> User already exists.
+                </div>
+                <div class="form-group">
+                    <label for="login">Login:</label>
+                    <input type="text"
+                           name="login"
+                           class="form-control"
+                           id="login"
+                           placeholder="Enter login"/>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           id="pwd"
+                           placeholder="Enter password"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email"
+                           name="email"
+                           class="form-control"
+                           id="email"
+                           placeholder="Enter email"/>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="phone"
+                           name="phone"
+                           class="form-control"
+                           id="phone"
+                           placeholder="Enter phone number"/>
+                </div>
+                <button type="submit"
+                        class="btn btn-primary">Submit</button>
+            </form>
+            <form action="/login"
+                  method="get">
+                <button type="submit"
+                        value="cancel"
+                        class="btn btn-link">Cancel</button>
+            </form>
+        </div>
+        <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
+    </div>
+</div>
+</body>
+</html>

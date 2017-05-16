@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <configuration packagingData="true" debug="true" scan="true" scanPeriod="10 seconds"> -->
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <springProfile name="dev,staging">
+        <logger name="org.apache.catalina.core" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="org.hibernate" level="ERROR" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="com.example" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+    </springProfile>
+    <springProfile name="production">
+        <logger name="org.apache.catalina.core" level="ERROR" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+        <logger name="org.springframework" level="ERROR" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+        <logger name="org.hibernate" level="ERROR" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+        <logger name="com.example" level="ERROR" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+    </springProfile>
+</configuration>

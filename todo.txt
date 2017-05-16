@@ -1,0 +1,11 @@
+/
+href login
+/login
+form login
+
+insert "Remember me" to login.html
+connect LiquiBase DB Migrate
+replace index.html with startbootstrap-SB-Admin-2-Gh-pages
+develop usecase model
+develop DB model
+develop interface model
