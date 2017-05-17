@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Регистратор документов</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Регистрация документов</a>
+            </div>
+            
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="wd-orders.html"><span class="glyphicon glyphicon-bullhorn"></span> Приказы</a></li>
+                <li><a href="wd-time-sheet.html"><span class="glyphicon glyphicon-time"></span> Табель</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Зарплата</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-barcode"></span> Склад</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+            <!--
+                <li><button class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-print"></span> Печатать</button></li>
+            -->
+                <li>
+                    <button class="btn btn-default navbar-btn">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </button>
+                </li>
+
+
+                    
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+                <li><button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-send"></span></button></li>
+
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Выход</a></li>
+            </ul>
+           
+            <form class="navbar-form navbar-right">
+                <span class="glyphicon glyphicon-search"></span>
+                <input type="text" class="form-control" placeholder="Поиск...">
+            </form>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        2017 Февраль
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">2017 Январь</a></li>
+                            <li><a href="#">2016 Декабрь</a></li>
+                            <li><a href="#">2016 Ноябрь</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            
+  </div>
+</nav>
+    
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">График работы<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Табель рабочего времени <span class="badge">5</span></a></li>
+            <hr/>
+            <li><a href="#">Командировка <span class="badge">3</span></a></li>
+            <hr/>
+            <li><a href="#">Отпуск ежегодный <span class="badge">16</span></a></li>
+            <li><a href="#">Отпуск учебный</a></li>
+            <li><a href="#">Отпуск послеродовой оплачиваемый</a></li>
+            <li><a href="#">Отпуск послеродовой неоплачиваемый</a></li>
+            <li><a href="#">Отпуск дополнительный льготный</a></li>
+            <li><a href="#">Отпуск дополнительный на детей</a></li>
+            <li><a href="#">Отпуск без содержания</a></li>
+            <hr/>
+            <li><a href="#">Больничный при заболевании</a></li>
+            <li><a href="#">Больничный по уходу <span class="badge">2</span></a></li>
+            <li><a href="#">Больничный по беременности и родам</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-md-9 main">
+          
+          
+            <div class="row">
+                <div class="col-md-10">
+                    <h2 class="sub-header text-primary">Отпуск ежегодный</h2>
+                </div>
+                <div class="col-md-2">
+                    <h2 class="sub-header text-primary">
+                    <a href="#" data-toggle="tooltip" title="Добавить документ"><span class="glyphicon glyphicon-plus-sign"></a>
+                    <a href="#" data-toggle="tooltip" title="Удалить документ"><span class="glyphicon glyphicon-minus-sign"></a>
+                    </h2>
+                </div>
+            </div>
+            
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Таб.№</th>
+                  <th>Фамилия И.О.</th>
+                  <th>Должность</th>
+                  <th>Начало</th>
+                  <th>Конец</th>
+                  <th>Дней</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Integer</td>
+                  <td>nec</td>
+                  <td>odio</td>
+                  <td>Praesent</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>libero</td>
+                  <td>Sed</td>
+                  <td>cursus</td>
+                  <td>ante</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>dapibus</td>
+                  <td>diam</td>
+                  <td>Sed</td>
+                  <td>nisi</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Nulla</td>
+                  <td>quis</td>
+                  <td>sem</td>
+                  <td>at</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>nibh</td>
+                  <td>elementum</td>
+                  <td>imperdiet</td>
+                  <td>Duis</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>sagittis</td>
+                  <td>ipsum</td>
+                  <td>Praesent</td>
+                  <td>mauris</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Fusce</td>
+                  <td>nec</td>
+                  <td>tellus</td>
+                  <td>sed</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>augue</td>
+                  <td>semper</td>
+                  <td>porta</td>
+                  <td>Mauris</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>massa</td>
+                  <td>Vestibulum</td>
+                  <td>lacinia</td>
+                  <td>arcu</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>eget</td>
+                  <td>nulla</td>
+                  <td>Class</td>
+                  <td>aptent</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>taciti</td>
+                  <td>sociosqu</td>
+                  <td>ad</td>
+                  <td>litora</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>torquent</td>
+                  <td>per</td>
+                  <td>conubia</td>
+                  <td>nostra</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>per</td>
+                  <td>inceptos</td>
+                  <td>himenaeos</td>
+                  <td>Curabitur</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>sodales</td>
+                  <td>ligula</td>
+                  <td>in</td>
+                  <td>libero</td>
+                  <td>24</td>
+                </tr>
+                
+              </tbody>
+            </table>
+           
+           <ul class="pagination">
+            <li><a href="#">&larr;</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">&rarr;</a></li>
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+    </div>    
+    
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a href="http://www.intelserv.com/about-company/about-company">
+                        Copyright © 2017 Intellect-Service. All rights reserved.
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Справка</a></li>
+                <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A">YouTube</a></li>
+                <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389">Facebook</a></li>
+                <li><a href="http://twitter.com/ISPRO7">Twitter</a></li>
+                <li><a href="http://www.linkedin.com/companies/intelligenceservice">LinkedIn</a></li>
+                <li><a href="https://plus.google.com/u/0/+Intelserv_Kiev">Google+</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
