@@ -25,14 +25,14 @@ public class JpaConfig implements TransactionManagementConfigurer {
     private String driver;
     @Value("${dataSource.url}")
     private String url;
-    @Value("${dateSource.username}")
+    @Value("${dataSource.username}")
     private String username;
     @Value("${dataSource.password}")
     private String password;
     @Value("${hibernate.dialect}")
     private String dialect;
     @Value("${hibernate.hbm2ddl.auto}")
-    private String hbm2ddlAuto;
+    private String ddlAuto;
 
     @Bean
     public HikariDataSource configureDataSource() {
@@ -55,7 +55,7 @@ public class JpaConfig implements TransactionManagementConfigurer {
 
         Properties jpaProperties = new Properties();
         jpaProperties.put(Environment.DIALECT, dialect);
-        jpaProperties.put(Environment.HBM2DDL_AUTO, hbm2ddlAuto);
+        jpaProperties.put(Environment.HBM2DDL_AUTO, ddlAuto);
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
