@@ -2,41 +2,40 @@ package ua.in.usv.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
+import static ua.in.usv.entity.UserRole.USER;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "\"USER\"")
 public class CustomUser {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
+    @Column(name = "User_Rcd", nullable = false, updatable = false)
     private long id;
 
-    @Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+//    @Enumerated(EnumType.STRING)
+//    private UserRole role = USER;
 
+    @Column(name = "User_Nm")
     private String login;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "password_hash", nullable = false)
+    @Column(name = "User_Pwd", nullable = false)
     private String passwordHash;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "User_FIO")
+    private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
-
+    @Column(name = "User_Phn")
     private String phone;
 
     public CustomUser() {}
+
+    public UserRole getRole() {
+        return USER;
+    }
 }

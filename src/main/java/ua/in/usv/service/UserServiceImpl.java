@@ -25,17 +25,17 @@ public class UserServiceImpl implements UserService {
         return customUser != null;
     }
 
-    @Override
-    @Transactional
-    public void addUser(CustomUser user) {
-        userRepository.save(user);
-    }
-
-    @Override
-    @Transactional
-    public void updateUser(CustomUser user) {
-        userRepository.save(user);
-    }
+//    @Override
+//    @Transactional
+//    public void addUser(CustomUser user) {
+//        userRepository.save(user);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public void updateUser(CustomUser user) {
+//        userRepository.save(user);
+//    }
 
 
 }

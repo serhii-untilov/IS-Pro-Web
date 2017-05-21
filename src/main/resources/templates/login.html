@@ -48,29 +48,8 @@
                            id="pwd"
                            placeholder="Enter password"/>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"
-                               name="remember-me"
-                               id="remember-me"/> Remember me
-                    </label>
-                </div>
                 <button type="submit"
                         class="btn btn-primary">Login</button>
-                <input type="hidden"
-                       th:name="${_csrf.parameterName}"
-                       th:value="${_csrf.token}"/>
-            </form>
-            <form action="/register" method="get">
-                <button type="submit"
-                        value="new_user"
-                        class="btn btn-link">Register new user</button>
-                <button type="submit"
-                        value="lost_password"
-                        class="btn btn-link">Lost Password?</button>
-                <button type="submit"
-                        value="need_help"
-                        class="btn btn-link">Need help?</button>
             </form>
         </div>
         <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
