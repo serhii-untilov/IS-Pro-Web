@@ -36,40 +36,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .antMatchers("/person").permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/unauthorized")
-        // login configuration
-        .and().formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/j_spring_security_check")
-                .failureUrl("/login?error")
-                .usernameParameter("j_login")
-                .passwordParameter("j_password")
-                .permitAll()
-        // logout configuration
-        .and().logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
-                .deleteCookies(rememberMeCookieName)
-                .invalidateHttpSession(true)
-                .permitAll()
-        // remember me configuration
-        .and().rememberMe()
-                .tokenRepository(persistentTokenRepository())
-                .key("remember-me-key")
-                .rememberMeParameter("remember-me")
-                .rememberMeCookieName(rememberMeCookieName)
-                .tokenValiditySeconds(86400);
+                .exceptionHandling().accessDeniedPage("/login?error")
+                // login configuration
+                .and().formLogin()
+                        .loginPage("/login")
+                        .loginProcessingUrl("/j_spring_security_check")
+                        .failureUrl("/login?error")
+                        .usernameParameter("j_login")
+                        .passwordParameter("j_password")
+                        .permitAll()
+                // logout configuration
+                .and().logout()
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .invalidateHttpSession(true)
+                        .permitAll();
     }
 
     private ShaPasswordEncoder getShaPasswordEncoder(){
         return new ShaPasswordEncoder();
-    }
-
-    @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
-        tokenRepository.setDataSource(dataSource);
-        return tokenRepository;
     }
 
     @Autowired
