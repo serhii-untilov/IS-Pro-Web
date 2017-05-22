@@ -13,7 +13,11 @@ public class Block {
 
     public Block(String str) {
         int length = str.length();
-        byte[] header = ByteBuffer.allocate(2).putInt(length).array();
+        //byte[] header = ByteBuffer.allocate(2).putInt(length).array();
+        byte[] header = {0,0};
+        length += 2;
+        header[0] = (byte) (length >> 8);
+        header[1] = (byte) (length);
         byte[] body = str.getBytes();
 
         byte[] block = new byte[header.length + body.length];
@@ -31,9 +35,10 @@ public class Block {
         return Arrays.copyOfRange(data, 2, data.length - 1);
     }
 
-    public int getBodySize() {
-        byte[] header = Arrays.copyOfRange(data, 0, 1);
-        return header[0] * 10 + header[1];
+    public int getSize() {
+        byte[] header = getHeader();
+        int size = (header[0] << 8) | header[1];
+        return size;
     }
 
     @Override

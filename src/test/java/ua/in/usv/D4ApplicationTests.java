@@ -19,6 +19,10 @@ public class D4ApplicationTests {
 	@Test
 	public void stayBlockTest() {
 		Block block = new Block("test");
-		assertThat(block.getBodySize()).isEqualTo(4);
+		assertThat(block.getSize()).isEqualTo(6);
+		byte[] header = block.getHeader();
+		assertThat(header.length).isEqualTo(2);
+		byte[] body = block.getBody();
+		assertThat(body.length).isEqualTo(4);
 	}
 }
