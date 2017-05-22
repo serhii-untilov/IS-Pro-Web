@@ -1,6 +1,9 @@
 package ua.in.usv.stay;
 
+import ua.in.usv.helper.ByteArray2String;
+
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.util.Arrays;
 
 public class Block {
@@ -13,7 +16,6 @@ public class Block {
 
     public Block(String str) {
         int length = str.length();
-        //byte[] header = ByteBuffer.allocate(2).putInt(length).array();
         byte[] header = {0,0};
         length += 2;
         header[0] = (byte) (length >> 8);
@@ -28,11 +30,11 @@ public class Block {
     }
 
     public byte[] getHeader() {
-        return Arrays.copyOfRange(data, 0, 1);
+        return Arrays.copyOfRange(data, 0, 2);
     }
 
     public byte[] getBody() {
-        return Arrays.copyOfRange(data, 2, data.length - 1);
+        return Arrays.copyOfRange(data, 2, data.length);
     }
 
     public int getSize() {
@@ -43,6 +45,7 @@ public class Block {
 
     @Override
     public String toString() {
-        return Arrays.toString(getBody());
+        byte[] body = getBody();
+        return ByteArray2String.convert(body);
     }
 }

@@ -1,11 +1,14 @@
 package ua.in.usv;
 
+import org.assertj.core.api.AbstractCharSequenceAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import ua.in.usv.helper.ByteArray2String;
 import ua.in.usv.stay.Block;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -24,5 +27,6 @@ public class D4ApplicationTests {
 		assertThat(header.length).isEqualTo(2);
 		byte[] body = block.getBody();
 		assertThat(body.length).isEqualTo(4);
+		assertTrue(block.toString().equals("test"));
 	}
 }
