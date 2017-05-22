@@ -2,6 +2,8 @@ package ua.in.usv.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import static ua.in.usv.entity.UserRole.USER;
 
@@ -32,6 +34,9 @@ public class CustomUser {
 
     @Column(name = "User_Phn")
     private String phone;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserPassword userPassword;
 
     public CustomUser() {}
 
