@@ -2,7 +2,6 @@ package ua.in.usv.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import ua.in.usv.helper.ByteArray2String;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
@@ -41,11 +40,5 @@ public class CustomUser {
 
     public UserRole getRole() {
         return USER;
-    }
-
-    public String getPasswordHash(){
-        String passwordHash = "";
-        passwordHash = ByteArray2String.convert(userPassword.getPasswordBlob());
-        return passwordHash;
     }
 }

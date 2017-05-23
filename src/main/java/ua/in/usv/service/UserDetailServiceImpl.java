@@ -25,7 +25,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+
         LOGGER.debug("Authenticating user with login={}", login);
+
         CustomUser customUser = userService.findByLogin(login);
         if (customUser == null)
             throw new UsernameNotFoundException(login + " not found");
@@ -33,7 +35,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         Set<GrantedAuthority> roles = new HashSet<>();
         roles.add(new SimpleGrantedAuthority(customUser.getRole().toString()));
 
-        return new User(customUser.getLogin(), customUser.getPasswordHash(), roles);
+        return new User(customUser.getLogin(), "", roles);
     }
 
 
