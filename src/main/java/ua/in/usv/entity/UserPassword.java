@@ -2,6 +2,7 @@ package ua.in.usv.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 import ua.in.usv.stay.Block;
 
 import javax.persistence.*;
@@ -13,14 +14,10 @@ import java.sql.Date;
 @Table(name = "PU")
 public class UserPassword {
 
-    @Column(name = "PU_Rcd", nullable = false, updatable = false)
+    @Id
+    @Column(name = "PU_RCD")
     private long id;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private CustomUser customUser;
-
-    @Temporal(TemporalType.DATE)
     @Column(name = "PU_PwdDate")
     private Date date;
 

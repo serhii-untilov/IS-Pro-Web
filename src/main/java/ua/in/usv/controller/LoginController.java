@@ -16,15 +16,9 @@ public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private Boolean logout;
 
-    @Autowired
-    private UserService userService;
-
-
     @RequestMapping("/login")
     public String loginPage(@RequestParam(required = false) Boolean logout, Model model) {
         logger.info("loginPageConroller");
-
-        CustomUser customUser = userService.findByLogin("usv");
 
         model.addAttribute("logout", logout);
         return "login";
