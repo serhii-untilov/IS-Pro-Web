@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,5 +43,18 @@ public class D4ApplicationTests {
 		CustomUser user = userService.findByLogin("usv");
 		String passwordHash = user.getPasswordHash();
 		assertTrue(passwordHash.equals(""));
+	}
+
+	@Test
+	public void passwordEncode(){
+		String password = "";
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(password);
+
+		CustomUser user = userService.findByLogin("usv");
+		String passwordHash = user.getPasswordHash();
+		assertTrue(passwordHash.equals(hashedPassword));
+
+		assertTrue(!hashedPassword.isEmpty());
 	}
 }

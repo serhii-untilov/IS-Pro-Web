@@ -2,8 +2,6 @@ package ua.in.usv.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import ua.in.usv.stay.Block;
 
 import javax.persistence.*;
 import java.sql.Date;
