@@ -1,3 +1,6 @@
+/**
+ * IS-Pro TSysPuBlock implementation
+ */
 package ua.in.usv.stay;
 
 import lombok.Getter;

@@ -2,24 +2,17 @@ package ua.in.usv.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Value("${rememberMe.cookieName}")
-    private String rememberMeCookieName;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -54,13 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll();
     }
 
-    private ShaPasswordEncoder getShaPasswordEncoder(){
-        return new ShaPasswordEncoder();
+    private Md5PasswordEncoder getMd5PasswordEncoder(){
+        return new Md5PasswordEncoder();
     }
 
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-                .passwordEncoder(getShaPasswordEncoder());
+                .passwordEncoder(getMd5PasswordEncoder());
     }
 }
