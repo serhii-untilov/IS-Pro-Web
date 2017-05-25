@@ -42,6 +42,7 @@ dependencies {
     // https://mvnrepository.com/artifact/hsqldb/hsqldb
     //compile group: 'hsqldb', name: 'hsqldb', version: '1.8.0.7'
 
+    //compile 'com.google.guava:guava:22.0'
 
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'1.4.3.RELEASE') {
 exclude(module: 'commons-logging')

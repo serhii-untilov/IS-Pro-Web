@@ -13,8 +13,10 @@ import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import ua.in.usv.entity.CustomUser;
+import ua.in.usv.helper.ByteArrayConvert;
 import ua.in.usv.service.UserService;
 import ua.in.usv.stay.PasswordBlock;
+import ua.in.usv.stay.PasswordEncoder;
 
 
 @RunWith(SpringRunner.class)
@@ -35,7 +37,7 @@ public class D4ApplicationTests {
 	public void passwordHashRead(){
 		CustomUser user = userService.findByLogin("usv");
 		PasswordBlock passwordBlock = new PasswordBlock(user.getUserPassword().getPasswordBlob());
-		assertTrue(passwordBlock.getHash().length == PasswordBlock.digest_len);
+		assertTrue(passwordBlock.getHash().length == PasswordEncoder.digest_len);
 	}
 
 	@Test
@@ -46,5 +48,21 @@ public class D4ApplicationTests {
 		Object salt = passwordBlock.getSalt();
 		String pass = md.encodePassword("", salt);
 		assertTrue(md.isPasswordValid(passwordBlock.toString(), "", salt));
+	}
+
+
+	@Test
+	public void md5PasswordHashCompareIS() {
+		CustomUser user = userService.findByLogin("usv");
+		PasswordBlock passwordBlock = new PasswordBlock(user.getUserPassword().getPasswordBlob());
+		String hashFromBase = passwordBlock.toString();
+
+		PasswordEncoder md = new PasswordEncoder();
+		long salt = passwordBlock.getSalt();
+		byte[] output = new byte[PasswordEncoder.digest_len];
+		md.generateHash("", salt, output);
+		String hashFromPass = ByteArrayConvert.toString(output);
+
+		assertTrue(hashFromBase.equals(hashFromPass));
 	}
 }

@@ -12,8 +12,6 @@ import java.util.Arrays;
 @Setter
 public class PasswordBlock {
 
-    public static final int digest_len  = 16;
-
     private byte version;
     private byte format;
     private short unused1;
