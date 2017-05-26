@@ -5,11 +5,13 @@ package ua.in.usv.stay;
 
 import lombok.Getter;
 import lombok.Setter;
+import ua.in.usv.helper.Long2Byte;
+
 import java.util.Arrays;
 
 @Getter
 @Setter
-public class PasswordEncoder {
+public class Md5HashEncoder {
 
     public static final int digest_len  = 16;
 
@@ -22,7 +24,7 @@ public class PasswordEncoder {
     private void transform(int[] buf, int[] in) {
     }
 
-    public PasswordEncoder() {
+    public Md5HashEncoder() {
         init();
     }
 
@@ -36,39 +38,12 @@ public class PasswordEncoder {
         bits[1] = 0;
     }
 
-    private void byteReverse(byte[] buf, int longs) {
-        int p = 0;
-        do {
-            int t  = buf[p + 3] << 8;
-                t |= buf[p + 2] << 16;
-                t |= buf[p + 1] << 8;
-                t |= buf[p];
-
-	        buf[p]   = (byte)(t >> 24);
-	        buf[p+1] = (byte)(t >> 16);
-	        buf[p+2] = (byte)(t >> 8);
-	        buf[p+3] = (byte)t;
-
-            p += 4;
-            longs -= 4;
-
-        } while (longs > 0);
-    }
-
-    private void byteReverse(int[] buf, int longs) {
-        byte b[] = new byte[longs * 4];
-        intArray2byteArray(buf, b);
-        byteReverse(b, longs * 4);
-        byteArray2intArray(b, buf);
-    }
-
-
     // The four core functions - F1 is optimized somewhat
     private long F1(long x, long y, long z) {
         return (z ^ (x & (y ^ z))) & 0x00000000ffffffffL;
     }
     private long F2(long x, long y, long z) {
-        return F1(x, y, z);
+        return F1(z, x, y);
     }
     private long F3(long x, long y, long z) {
         return (x ^ y ^ z) & 0x00000000ffffffffL;
@@ -79,18 +54,27 @@ public class PasswordEncoder {
 
     // This is the central step in the MD5 algorithm.
     private long md5step(long f, long w, long x, long y, long z, long data, long s) {
-        w += f + data;
-        w = ((w << s) & 0x00000000ffffffffL) | (w >>(32-s) & 0x00000000ffffffffL);
-        w += x;
-        return w & 0x00000000ffffffffL;
+
+        f &= 0x00000000ffffffffL;
+        w &= 0x00000000ffffffffL;
+        x &= 0x00000000ffffffffL;
+        y &= 0x00000000ffffffffL;
+        z &= 0x00000000ffffffffL;
+        data &= 0x00000000ffffffffL;
+        s &= 0x00000000ffffffffL;
+
+        w = (w + ((f + data) & 0x00000000ffffffffL) & 0x00000000ffffffffL);
+        w = ((w << s) & 0x00000000ffffffffL) | ((w >> (32-s)) & 0x00000000ffffffffL);
+        w = (w + (x & 0x00000000ffffffffL) & 0x00000000ffffffffL);
+        return w;
     }
 
     // static void MD5Transform(uint4 buf[4], uint4 const in[16])
     private void md5transform(int[] buf, int[] in)
     {
-        byte bb = -128;
-        int ii = bb & 0xFFFFFFF;
-        long ll = ii & 0xFFFF;
+        //byte bb = -128;
+        //int ii = bb & 0xFFFFFFF;
+        //long ll = ii & 0xFFFF;
 
 
         long a = buf[0] & 0x00000000ffffffffL;
@@ -221,7 +205,6 @@ public class PasswordEncoder {
                 return;
             }
             System.arraycopy(buf_p, i, in, p, (int)t);
-            byteReverse(in, 16);
             md5transform(buf, in);
             i += t;
             len -= t;
@@ -230,7 +213,6 @@ public class PasswordEncoder {
         // Process dat  a in 64-byte chunks
         while (len >= 64) {
             System.arraycopy(buf_p, i, in, 0, 64);
-            byteReverse(in, 16);
             md5transform(buf, in);
             i += 64;
             len -= 64;
@@ -260,7 +242,6 @@ public class PasswordEncoder {
         if (count < 8) {
 	        // Two lots of padding:  Pad the first block to 64 bytes
             Arrays.fill(in, p, p + (int)count - 1, (byte) 0);
-            byteReverse(in, 16);
             md5transform(buf, in);
 	        // Now fill the next block with 56 bytes
             Arrays.fill(in, 0, 56, (byte) 0);
@@ -268,22 +249,20 @@ public class PasswordEncoder {
 	        // Pad block to 56 bytes
             Arrays.fill(in, p, p + (int)count - 8 - 1, (byte) 0);
         }
-        byteReverse(in, 14);
 
         // Append length in bits and transform
         // ((uint4 *) in)[14] = bits[0];
-        in[56] = (byte)(bits[0] >> 24);
-        in[57] = (byte)(bits[0] >> 16);
-        in[58] = (byte)(bits[0] >> 8);
-        in[59] = (byte)bits[0];
+        in[56] = (byte)bits[0];
+        in[57] = (byte)(bits[0] >> 8);
+        in[58] = (byte)(bits[0] >> 16);
+        in[59] = (byte)(bits[0] >> 24);
         //((uint4 *) in)[15] = bits[1];
-        in[60] = (byte)(bits[1] >> 24);
-        in[61] = (byte)(bits[1] >> 16);
-        in[62] = (byte)(bits[1] >> 8);
-        in[63] = (byte)bits[1];
+        in[60] = (byte)bits[1];
+        in[61] = (byte)(bits[1] >> 8);
+        in[62] = (byte)(bits[1] >> 16);
+        in[63] = (byte)(bits[1] >> 24);
 
         md5transform(buf, in);
-        byteReverse(buf, 4);
 
         //System.arraycopy(buf, 0, digest, 0, 16);
         setDigest(buf);
@@ -293,10 +272,10 @@ public class PasswordEncoder {
 
     private void setDigest(int[] buf4) {
         for (int i = 0; i < buf.length; i++) {
-            digest[i * 4] = (byte)((buf[i] >> 24) & 0xFF);
-            digest[i * 4 + 1] = (byte)((buf[i] >> 16) & 0xFF);
-            digest[i * 4 + 2] = (byte)((buf[i] >> 8) & 0xFF);
-            digest[i * 4 + 3] = (byte)((buf[i]) & 0xFF);
+            digest[i * 4 + 3] = (byte)((buf[i] >> 24) & 0xFF);
+            digest[i * 4 + 2] = (byte)((buf[i] >> 16) & 0xFF);
+            digest[i * 4 + 1] = (byte)((buf[i] >> 8) & 0xFF);
+            digest[i * 4    ] = (byte)((buf[i]) & 0xFF);
         }
     }
 
@@ -305,17 +284,14 @@ public class PasswordEncoder {
     {
         init();
 
-        byte[] saltBytes = new byte[4];
-        saltBytes[0] = (byte)(salt >> 24);
-        saltBytes[1] = (byte)(salt >> 16);
-        saltBytes[2] = (byte)(salt >> 8);
-        saltBytes[3] = (byte)salt;
-        update(saltBytes, 4);
+        byte[] saltBytes = Long2Byte.encode(salt);
+        update(saltBytes, saltBytes.length);
 
         byte[] strBytes = str.getBytes();
         update(strBytes, strBytes.length);
 
         flush();
+
         System.arraycopy(digest, 0, output, 0, output.length);
 
         return digest_len;
