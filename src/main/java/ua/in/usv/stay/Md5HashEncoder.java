@@ -301,19 +301,11 @@ public class Md5HashEncoder {
     {
         init();
 
-        byte[] saltBytes = new byte[4];
-        saltBytes[0] = (byte)(salt >> 24);
-        saltBytes[1] = (byte)(salt >> 16);
-        saltBytes[2] = (byte)(salt >> 8);
-        saltBytes[3] = (byte)salt;
-        update(saltBytes, 4);
+        byte[] saltBytes = Long2Byte.encode(salt);
+        update(saltBytes, saltBytes.length);
 
-        byte[] keyBytes = new byte[4];
-        saltBytes[0] = (byte)(key >> 24);
-        saltBytes[1] = (byte)(key >> 16);
-        saltBytes[2] = (byte)(key >> 8);
-        saltBytes[3] = (byte)key;
-        update(keyBytes, 4);
+        byte[] keyBytes = Long2Byte.encode(key);
+        update(keyBytes, keyBytes.length);
 
         byte[] strBytes = str.getBytes();
         update(strBytes, strBytes.length);

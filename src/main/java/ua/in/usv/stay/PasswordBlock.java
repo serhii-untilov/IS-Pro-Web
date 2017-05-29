@@ -15,7 +15,7 @@ public class PasswordBlock {
     private byte version;
     private byte format;
     private short unused1;
-    private int salt;
+    private long salt;
     private byte[] hash;
 
     public PasswordBlock(byte[] block) {
@@ -23,10 +23,15 @@ public class PasswordBlock {
         format = block[1];
         unused1 = 0;
 
-        salt  = (int)(block[4] & 0xFF) << 24;
-        salt |= (int)(block[5] & 0xFF) << 16;
-        salt |= (int)(block[6] & 0xFF) << 8;
-        salt |= (int)(block[7] & 0xFF);
+//        salt  = (long)(block[4] & 0xFF) << 24;
+//        salt |= (long)(block[5] & 0xFF) << 16;
+//        salt |= (long)(block[6] & 0xFF) << 8;
+//        salt |= (long)(block[7] & 0xFF);
+
+        salt  = ((long)(block[7] & 0xFF) << 24);
+        salt |= ((long)(block[6] & 0xFF) << 16);
+        salt |= ((long)(block[5] & 0xFF) << 8);
+        salt |= ((long)(block[4] & 0xFF));
 
         byte[] hash = new byte[block.length - 8];
         System.arraycopy(block, 8, hash, 0, block.length - 8);

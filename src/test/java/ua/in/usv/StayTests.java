@@ -52,7 +52,7 @@ public class StayTests {
         Md5HashEncoder md = new Md5HashEncoder();
         long salt = passwordBlock.getSalt();
         byte[] output = new byte[Md5HashEncoder.digest_len];
-        md.generateHash("", salt, output);
+        md.generateHash(43,"123", salt, output);
         String hashFromPass = ByteArrayConvert.toString(output);
 
         assertTrue(hashFromBase.equals(hashFromPass));
@@ -67,9 +67,9 @@ public class StayTests {
         GostHashEncoder md = new GostHashEncoder();
         long salt = passwordBlock.getSalt();
         byte[] output = new byte[Md5HashEncoder.digest_len];
-        md.Encode(byte[] key, int key_len, byte[] input, int input_len, byte[] output) {
-
-                ()("", salt, output);
+        byte[] key = null; // todo:
+        byte[] input = null; // todo:
+        md.Encode(key, key.length, input, input.length, output);
         String hashFromPass = ByteArrayConvert.toString(output);
 
         assertTrue(hashFromBase.equals(hashFromPass));
