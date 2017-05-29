@@ -23,15 +23,10 @@ public class PasswordBlock {
         format = block[1];
         unused1 = 0;
 
-//        salt  = (long)(block[4] & 0xFF) << 24;
-//        salt |= (long)(block[5] & 0xFF) << 16;
-//        salt |= (long)(block[6] & 0xFF) << 8;
-//        salt |= (long)(block[7] & 0xFF);
-
-        salt  = ((long)(block[7] & 0xFF) << 24);
-        salt |= ((long)(block[6] & 0xFF) << 16);
-        salt |= ((long)(block[5] & 0xFF) << 8);
-        salt |= ((long)(block[4] & 0xFF));
+        salt  = (long)(block[7] & 0xFF) << 24;
+        salt |= (long)(block[6] & 0xFF) << 16;
+        salt |= (long)(block[5] & 0xFF) << 8;
+        salt |= (long)(block[4] & 0xFF);
 
         byte[] hash = new byte[block.length - 8];
         System.arraycopy(block, 8, hash, 0, block.length - 8);
