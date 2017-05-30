@@ -14,13 +14,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
 import ua.in.usv.entity.CustomUser;
 import ua.in.usv.helper.ByteArrayConvert;
 import ua.in.usv.service.UserService;
 import ua.in.usv.stay.Md5HashEncoder;
 import ua.in.usv.stay.PasswordBlock;
 
-@Configuration
+@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
