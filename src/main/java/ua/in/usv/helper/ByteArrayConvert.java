@@ -2,9 +2,6 @@ package ua.in.usv.helper;
 
 import java.util.Arrays;
 
-/**
- * Created by usv on 25.05.2017.
- */
 public class ByteArrayConvert {
 
     public static String toString(byte[] array) {
