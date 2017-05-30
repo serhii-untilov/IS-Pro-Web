@@ -69,10 +69,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         md.generateHash(key, password, salt, output);
         String hashFromPass = ByteArrayConvert.toString(output);
 
-        if (!hashFromBase.equals(hashFromPass))
-            return false;
-
-        return true;
+        return hashFromPass.equals(hashFromBase);
     }
 }
 

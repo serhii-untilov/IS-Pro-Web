@@ -42,9 +42,4 @@ public class CustomUser {
     public UserRole getRole() {
         return USER;
     }
-
-    public String getHashPassword() {
-        PasswordBlock passwordBlock = new PasswordBlock(getUserPassword().getPasswordBlob());
-        return passwordBlock.getPasswordHash();
-    }
 }
