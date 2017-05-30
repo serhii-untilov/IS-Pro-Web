@@ -1,5 +1,5 @@
-/**
- * IS-Pro TSysPuBlock implementation
+/*
+  IS-Pro TSysPuBlock implementation
  */
 package ua.in.usv.stay;
 
@@ -25,10 +25,6 @@ public class PasswordBlock {
         format = block[1];
         unused1 = 0;
 
-//        salt  = (long)(block[7] & 0xFF) << 24;
-//        salt |= (long)(block[6] & 0xFF) << 16;
-//        salt |= (long)(block[5] & 0xFF) << 8;
-//        salt |= (long)(block[4] & 0xFF);
         salt = Long2Byte.decode(block, 4);
 
         byte[] hash = new byte[block.length - 8];
