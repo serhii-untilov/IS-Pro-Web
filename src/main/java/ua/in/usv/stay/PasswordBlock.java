@@ -5,6 +5,8 @@ package ua.in.usv.stay;
 
 import lombok.Getter;
 import lombok.Setter;
+import ua.in.usv.helper.Byte2String;
+import ua.in.usv.helper.Long2Byte;
 
 import java.util.Arrays;
 
@@ -23,10 +25,11 @@ public class PasswordBlock {
         format = block[1];
         unused1 = 0;
 
-        salt  = (long)(block[7] & 0xFF) << 24;
-        salt |= (long)(block[6] & 0xFF) << 16;
-        salt |= (long)(block[5] & 0xFF) << 8;
-        salt |= (long)(block[4] & 0xFF);
+//        salt  = (long)(block[7] & 0xFF) << 24;
+//        salt |= (long)(block[6] & 0xFF) << 16;
+//        salt |= (long)(block[5] & 0xFF) << 8;
+//        salt |= (long)(block[4] & 0xFF);
+        salt = Long2Byte.decode(block, 4);
 
         byte[] hash = new byte[block.length - 8];
         System.arraycopy(block, 8, hash, 0, block.length - 8);
@@ -34,17 +37,6 @@ public class PasswordBlock {
     }
 
     public String getPasswordHash() {
-        if (hash == null)
-            return "";
-        int iMax = hash.length - 1;
-        if (iMax == -1)
-            return "";
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; ; i++) {
-            int charCode = hash[i] & 0xFF;
-            b.append(Character.toString((char)charCode));
-            if (i == iMax)
-                return b.toString();
-        }
+        return Byte2String.encode(hash);
     }
 }

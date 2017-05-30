@@ -1,10 +1,8 @@
 package ua.in.usv.helper;
 
-import java.util.Arrays;
+public class Byte2String {
 
-public class ByteArrayConvert {
-
-    public static String toString(byte[] array) {
+    public static String encode(byte[] array) {
         if (array == null)
             return "";
         int iMax = array.length - 1;

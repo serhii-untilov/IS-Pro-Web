@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import ua.in.usv.entity.CustomUser;
-import ua.in.usv.helper.ByteArrayConvert;
+import ua.in.usv.helper.Byte2String;
 import ua.in.usv.service.UserService;
 import ua.in.usv.stay.Md5HashEncoder;
 import ua.in.usv.stay.PasswordBlock;
@@ -67,7 +67,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         long key = customUser.getId();
         byte[] output = new byte[Md5HashEncoder.digest_len];
         md.generateHash(key, password, salt, output);
-        String hashFromPass = ByteArrayConvert.toString(output);
+        String hashFromPass = Byte2String.encode(output);
 
         return hashFromPass.equals(hashFromBase);
     }

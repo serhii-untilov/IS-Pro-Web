@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ua.in.usv.entity.CustomUser;
-import ua.in.usv.helper.ByteArrayConvert;
+import ua.in.usv.helper.Byte2String;
 import ua.in.usv.service.UserService;
 import ua.in.usv.stay.PasswordBlock;
 import ua.in.usv.stay.Md5HashEncoder;
@@ -53,7 +53,7 @@ public class StayTests {
         String password = "";
         byte[] output = new byte[Md5HashEncoder.digest_len];
         md.generateHash(key, password, salt, output);
-        String hashFromPass = ByteArrayConvert.toString(output);
+        String hashFromPass = Byte2String.encode(output);
 
         assertTrue(hashFromBase.equals(hashFromPass));
     }
@@ -70,7 +70,7 @@ public class StayTests {
 //        byte[] key = null; // todo:
 //        byte[] input = null; // todo:
 //        md.Encode(key, key.length, input, input.length, output);
-//        String hashFromPass = ByteArrayConvert.getPasswordHash(output);
+//        String hashFromPass = Byte2String.getPasswordHash(output);
 //
 //        assertTrue(hashFromBase.equals(hashFromPass));
 //    }

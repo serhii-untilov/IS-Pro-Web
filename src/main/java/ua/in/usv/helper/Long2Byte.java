@@ -2,7 +2,7 @@ package ua.in.usv.helper;
 
 public class Long2Byte {
 
-    public static final byte[] encode(long in) {
+    public static byte[] encode(long in) {
         byte[] out = new byte[4];
         out[3] = (byte) (in >> 24);
         out[2] = (byte) (in >> 16);
@@ -11,11 +11,11 @@ public class Long2Byte {
         return out;
     }
 
-    public static final long decode(byte[] in) {
-        long out = in[3] << 24;
-        out |= in[2] << 16;
-        out |= in[1] << 8;
-        out |= in[0];
+    public static long decode(byte[] in, int offset) {
+        long out = (long)(in[offset + 3] & 0xFF) << 24;
+        out |= (long)(in[offset + 2] & 0xFF) << 16;
+        out |= (long)(in[offset + 1] & 0xFF) << 8;
+        out |= (long)(in[offset] & 0xFF);
         return out;
     }
 }
