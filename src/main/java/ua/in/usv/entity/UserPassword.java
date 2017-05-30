@@ -4,6 +4,7 @@ import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
+import ua.in.usv.stay.PasswordBlock;
 
 import javax.persistence.*;
 import java.sql.Date;

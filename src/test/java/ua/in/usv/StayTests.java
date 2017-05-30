@@ -6,12 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import ua.in.usv.entity.CustomUser;
 import ua.in.usv.helper.ByteArrayConvert;
 import ua.in.usv.service.UserService;
-import ua.in.usv.stay.GostHashEncoder;
 import ua.in.usv.stay.PasswordBlock;
 import ua.in.usv.stay.Md5HashEncoder;
 
@@ -40,21 +38,21 @@ public class StayTests {
 //        Md5PasswordEncoder md = new Md5PasswordEncoder();
 //        Object salt = passwordBlock.getSalt();
 //        String pass = md.encodePassword("", salt);
-//        assertTrue(md.isPasswordValid(passwordBlock.toString(), "", salt));
+//        assertTrue(md.isPasswordValid(passwordBlock.getPasswordHash(), "", salt));
 //    }
 
     @Test
     public void md5PasswordHashCompareIS() {
         CustomUser user = userService.findByLogin("usv");
         PasswordBlock passwordBlock = new PasswordBlock(user.getUserPassword().getPasswordBlob());
-        String hashFromBase = passwordBlock.toString();
+        String hashFromBase = passwordBlock.getPasswordHash();
 
         Md5HashEncoder md = new Md5HashEncoder();
         long salt = passwordBlock.getSalt();
         long key = user.getId();
         String password = "";
         byte[] output = new byte[Md5HashEncoder.digest_len];
-        md.generateHash(key,password, salt, output);
+        md.generateHash(key, password, salt, output);
         String hashFromPass = ByteArrayConvert.toString(output);
 
         assertTrue(hashFromBase.equals(hashFromPass));
@@ -64,7 +62,7 @@ public class StayTests {
 //    public void gostPasswordHashCompareIS() {
 //        CustomUser user = userService.findByLogin("usv");
 //        PasswordBlock passwordBlock = new PasswordBlock(user.getUserPassword().getPasswordBlob());
-//        String hashFromBase = passwordBlock.toString();
+//        String hashFromBase = passwordBlock.getPasswordHash();
 //
 //        GostHashEncoder md = new GostHashEncoder();
 //        long salt = passwordBlock.getSalt();
@@ -72,7 +70,7 @@ public class StayTests {
 //        byte[] key = null; // todo:
 //        byte[] input = null; // todo:
 //        md.Encode(key, key.length, input, input.length, output);
-//        String hashFromPass = ByteArrayConvert.toString(output);
+//        String hashFromPass = ByteArrayConvert.getPasswordHash(output);
 //
 //        assertTrue(hashFromBase.equals(hashFromPass));
 //    }

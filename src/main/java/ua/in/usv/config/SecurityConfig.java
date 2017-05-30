@@ -47,13 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll();
     }
 
-    private Md5PasswordEncoder getMd5PasswordEncoder(){
-        return new Md5PasswordEncoder();
-    }
-
-    @Autowired
-    public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(getMd5PasswordEncoder());
-    }
+//    private Md5PasswordEncoder getMd5PasswordEncoder(){
+//        return new Md5PasswordEncoder();
+//    }
+//
+//    @Autowired
+//    public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService)
+//                .passwordEncoder(getMd5PasswordEncoder());
+//    }
 }

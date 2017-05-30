@@ -2,6 +2,7 @@ package ua.in.usv.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import ua.in.usv.stay.PasswordBlock;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
@@ -40,5 +41,10 @@ public class CustomUser {
 
     public UserRole getRole() {
         return USER;
+    }
+
+    public String getHashPassword() {
+        PasswordBlock passwordBlock = new PasswordBlock(getUserPassword().getPasswordBlob());
+        return passwordBlock.getPasswordHash();
     }
 }

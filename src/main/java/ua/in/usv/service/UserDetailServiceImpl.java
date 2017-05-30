@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ua.in.usv.stay.PasswordBlock;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,7 +36,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
         Set<GrantedAuthority> roles = new HashSet<>();
         roles.add(new SimpleGrantedAuthority(customUser.getRole().toString()));
 
-        return new User(customUser.getLogin(), "", roles);
+        PasswordBlock passwordBlock = new PasswordBlock(customUser.getUserPassword().getPasswordBlob());
+        String hashPassword = passwordBlock.getPasswordHash();
+
+        return new User(customUser.getLogin(), hashPassword, roles);
     }
 
 

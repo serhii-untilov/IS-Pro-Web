@@ -33,8 +33,7 @@ public class PasswordBlock {
         this.hash = hash;
     }
 
-    @Override
-    public String toString() {
+    public String getPasswordHash() {
         if (hash == null)
             return "";
         int iMax = hash.length - 1;
