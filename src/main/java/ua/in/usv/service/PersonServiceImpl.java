@@ -9,8 +9,12 @@ import ua.in.usv.repository.PersonRepository;
 @Service
 public class PersonServiceImpl implements PersonService {
 
+    private final PersonRepository personRepository;
+
     @Autowired
-    private PersonRepository personRepository;
+    public PersonServiceImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @Override
     @Transactional(readOnly = true)

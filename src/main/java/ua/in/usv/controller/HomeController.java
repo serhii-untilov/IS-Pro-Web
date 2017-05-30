@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public HomeController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping("/")
     public String index(Model model){

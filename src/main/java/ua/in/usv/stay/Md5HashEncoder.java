@@ -28,7 +28,7 @@ public class Md5HashEncoder {
         init();
     }
 
-    public void init() {
+    private void init() {
         buf[0] = 0x67452301;
         buf[1] = 0xefcdab89;
         buf[2] = 0x98badcfe;
@@ -182,7 +182,7 @@ public class Md5HashEncoder {
         }
     }
 
-    public void update(byte[] buf_p, int len) {
+    private void update(byte[] buf_p, int len) {
         // Update bitcount
         long  t = bits[0] & 0x00000000ffffffffL;
         bits[0] = (int)((t + (len << 3)) & 0x00000000ffffffffL);
@@ -225,7 +225,7 @@ public class Md5HashEncoder {
 
     // Final wrapup - pad to 64-byte boundary with the bit pattern
     // 1 0* (64-bit count of bits processed, MSB-first)
-    public void flush() {
+    private void flush() {
 
         // Compute number of bytes mod 64
         long count = (bits[0] >> 3) & 0x3F;

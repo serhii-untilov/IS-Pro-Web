@@ -31,16 +31,6 @@ public class StayTests {
         assertTrue(passwordBlock.getHash().length == Md5HashEncoder.digest_len);
     }
 
-//    @Test
-//    public void md5PasswordHashCompare(){
-//        CustomUser user = userService.findByLogin("usv");
-//        PasswordBlock passwordBlock = new PasswordBlock(user.getUserPassword().getPasswordBlob());
-//        Md5PasswordEncoder md = new Md5PasswordEncoder();
-//        Object salt = passwordBlock.getSalt();
-//        String pass = md.encodePassword("", salt);
-//        assertTrue(md.isPasswordValid(passwordBlock.getPasswordHash(), "", salt));
-//    }
-
     @Test
     public void md5PasswordHashCompareIS() {
         CustomUser user = userService.findByLogin("usv");
@@ -57,21 +47,4 @@ public class StayTests {
 
         assertTrue(hashFromBase.equals(hashFromPass));
     }
-
-//    @Test
-//    public void gostPasswordHashCompareIS() {
-//        CustomUser user = userService.findByLogin("usv");
-//        PasswordBlock passwordBlock = new PasswordBlock(user.getUserPassword().getPasswordBlob());
-//        String hashFromBase = passwordBlock.getPasswordHash();
-//
-//        GostHashEncoder md = new GostHashEncoder();
-//        long salt = passwordBlock.getSalt();
-//        byte[] output = new byte[Md5HashEncoder.digest_len];
-//        byte[] key = null; // todo:
-//        byte[] input = null; // todo:
-//        md.Encode(key, key.length, input, input.length, output);
-//        String hashFromPass = Byte2String.getPasswordHash(output);
-//
-//        assertTrue(hashFromBase.equals(hashFromPass));
-//    }
 }

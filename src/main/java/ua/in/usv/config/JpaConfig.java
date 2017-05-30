@@ -41,9 +41,7 @@ public class JpaConfig implements TransactionManagementConfigurer {
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
-
-        HikariDataSource dataSource = new HikariDataSource(config);
-        return dataSource;
+        return new HikariDataSource(config);
     }
 
     @Bean(name="entityManagerFactory")

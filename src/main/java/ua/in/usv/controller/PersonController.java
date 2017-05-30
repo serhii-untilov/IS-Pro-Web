@@ -11,8 +11,12 @@ import ua.in.usv.service.PersonService;
 @Controller
 public class PersonController {
 
+    private final PersonService personService;
+
     @Autowired
-    private PersonService personService;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
 
     @RequestMapping("/person")
     public String personPage(@RequestParam(required = false) Long id, Model model){

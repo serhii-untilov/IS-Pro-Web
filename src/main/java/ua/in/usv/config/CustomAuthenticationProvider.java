@@ -26,8 +26,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public CustomAuthenticationProvider(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

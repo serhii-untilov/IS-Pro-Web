@@ -14,12 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private HikariDataSource dataSource;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
