@@ -72,11 +72,6 @@ public class Md5HashEncoder {
     // static void MD5Transform(uint4 buf[4], uint4 const in[16])
     private void md5transform(int[] buf, int[] in)
     {
-        //byte bb = -128;
-        //int ii = bb & 0xFFFFFFF;
-        //long ll = ii & 0xFFFF;
-
-
         long a = buf[0] & 0x00000000ffffffffL;
         long b = buf[1] & 0x00000000ffffffffL;
         long c = buf[2] & 0x00000000ffffffffL;
@@ -162,7 +157,6 @@ public class Md5HashEncoder {
         md5transform(buf, inInt);
         intArray2byteArray(inInt, in);
     }
-
 
     private void byteArray2intArray(byte[] ba, int[] ia) {
         for (int i = 0; i < ia.length; i++) {
@@ -263,10 +257,7 @@ public class Md5HashEncoder {
         in[63] = (byte)(bits[1] >> 24);
 
         md5transform(buf, in);
-
-        //System.arraycopy(buf, 0, digest, 0, 16);
         setDigest(buf);
-
         init();
     }
 
