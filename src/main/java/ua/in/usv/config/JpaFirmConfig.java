@@ -34,8 +34,7 @@ public class JpaFirmConfig {
     @Bean
     @ConfigurationProperties("dataSource.firm")
     public HikariDataSource firmDataSource() {
-        return (HikariDataSource) DataSourceBuilder.create()
-                .type(HikariDataSource.class).build();
+        return (HikariDataSource) DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
     @Bean
@@ -61,10 +60,8 @@ public class JpaFirmConfig {
 
     @Bean
     public PlatformTransactionManager firmTransactionManager() {
-        JpaTransactionManager transactionManager
-                = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(
-                firmEntityManagerFactory().getObject());
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(firmEntityManagerFactory().getObject());
         return transactionManager;
     }
 }

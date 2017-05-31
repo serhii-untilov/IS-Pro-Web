@@ -36,8 +36,7 @@ public class JpaRootConfig {
     @Bean
     @ConfigurationProperties("dataSource.root")
     public HikariDataSource rootDataSource() {
-        return (HikariDataSource) DataSourceBuilder.create()
-                .type(HikariDataSource.class).build();
+        return (HikariDataSource) DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
     @Bean
@@ -65,10 +64,8 @@ public class JpaRootConfig {
 
     @Primary
     public PlatformTransactionManager rootTransactionManager() {
-        JpaTransactionManager transactionManager
-                = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(
-                rootEntityManagerFactory().getObject());
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(rootEntityManagerFactory().getObject());
         return transactionManager;
     }
 }
