@@ -3,8 +3,8 @@ package ua.in.usv.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ua.in.usv.entity.Person;
-import ua.in.usv.repository.PersonRepository;
+import ua.in.usv.entity.firm.Person;
+import ua.in.usv.repository.firm.PersonRepository;
 
 @Service
 public class PersonServiceImpl implements PersonService {

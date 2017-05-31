@@ -1,6 +1,6 @@
 package ua.in.usv.service;
 
-import ua.in.usv.entity.CustomUser;
+import ua.in.usv.entity.root.CustomUser;
 
 public interface UserService {
     CustomUser findByLogin(String login);

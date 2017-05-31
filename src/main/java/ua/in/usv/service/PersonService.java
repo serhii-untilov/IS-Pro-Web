@@ -1,6 +1,6 @@
 package ua.in.usv.service;
 
-import ua.in.usv.entity.Person;
+import ua.in.usv.entity.firm.Person;
 
 public interface PersonService {
     Person findByName(String name);

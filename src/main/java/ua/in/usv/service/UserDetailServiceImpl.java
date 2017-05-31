@@ -1,6 +1,6 @@
 package ua.in.usv.service;
 
-import ua.in.usv.entity.CustomUser;
+import ua.in.usv.entity.root.CustomUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

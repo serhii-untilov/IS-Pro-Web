@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
-import ua.in.usv.entity.Person;
+import ua.in.usv.entity.firm.Person;
 import ua.in.usv.service.PersonService;
 
 @Controller

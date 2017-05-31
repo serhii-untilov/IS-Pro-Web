@@ -1,15 +1,14 @@
-package ua.in.usv.entity;
+package ua.in.usv.entity.root;
 
 import lombok.Getter;
 import lombok.Setter;
-import ua.in.usv.stay.PasswordBlock;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import static ua.in.usv.entity.UserRole.USER;
+import static ua.in.usv.entity.root.UserRole.USER;
 
 @Entity
 @Getter

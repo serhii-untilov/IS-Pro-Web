@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashSet;
 import java.util.Set;
 
-import ua.in.usv.entity.CustomUser;
+import ua.in.usv.entity.root.CustomUser;
 import ua.in.usv.helper.Byte2String;
 import ua.in.usv.service.UserService;
 import ua.in.usv.stay.Md5HashEncoder;

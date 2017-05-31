@@ -1,7 +1,7 @@
 package ua.in.usv.service;
 
-import ua.in.usv.entity.CustomUser;
-import ua.in.usv.repository.UserRepository;
+import ua.in.usv.entity.root.CustomUser;
+import ua.in.usv.repository.root.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

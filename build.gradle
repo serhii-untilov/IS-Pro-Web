@@ -37,7 +37,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4
     //compile group: 'com.microsoft.sqlserver', name: 'sqljdbc4', version: '4.0'
 
-    
+    optional "org.springframework.boot:spring-boot-configuration-processor"
+    compileJava.dependsOn(processResources)
 
     // https://mvnrepository.com/artifact/hsqldb/hsqldb
     //compile group: 'hsqldb', name: 'hsqldb', version: '1.8.0.7'
@@ -45,6 +46,6 @@ dependencies {
     //compile 'com.google.guava:guava:22.0'
 
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'1.4.3.RELEASE') {
-exclude(module: 'commons-logging')
+        exclude(module: 'commons-logging')
     }
 }

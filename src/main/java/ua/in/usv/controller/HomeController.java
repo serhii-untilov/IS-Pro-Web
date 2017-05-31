@@ -1,6 +1,6 @@
 package ua.in.usv.controller;
 
-import ua.in.usv.entity.CustomUser;
+import ua.in.usv.entity.root.CustomUser;
 import ua.in.usv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

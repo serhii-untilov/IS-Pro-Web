@@ -1,4 +1,4 @@
-package ua.in.usv.entity;
+package ua.in.usv.entity.root;
 
 public enum UserRole {
     ADMIN, USER;
