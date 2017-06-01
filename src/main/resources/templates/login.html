@@ -48,8 +48,21 @@
                            id="pwd"
                            placeholder="Enter password"/>
                 </div>
+
                 <button type="submit"
                         class="btn btn-primary">Login</button>
+
+                <div class="dropdown pull-right">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        Language<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Українська</a></li>
+                        <li><a href="#">Російська</a></li>
+                        <li><a href="#">Англійська</a></li>
+                    </ul>
+                </div>
+
                 <input type="hidden"
                        th:name="${_csrf.parameterName}"
                        th:value="${_csrf.token}"/>
