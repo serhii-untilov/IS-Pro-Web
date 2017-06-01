@@ -21,8 +21,8 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String login = user.getUsername();
+        //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String login = SecurityContextHolder.getContext().getAuthentication().getName();
 
         CustomUser customUser = userService.findByLogin(login);
 

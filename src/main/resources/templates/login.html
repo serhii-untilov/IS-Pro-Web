@@ -50,6 +50,9 @@
                 </div>
                 <button type="submit"
                         class="btn btn-primary">Login</button>
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}"/>
             </form>
         </div>
         <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
