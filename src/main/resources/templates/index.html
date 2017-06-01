@@ -2,11 +2,11 @@
 <!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <title>Index</title>
     <meta http-equiv="Content-Type"
           content="text/html; charset=UTF-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0"/>
+    <title>Регистратор документов</title>
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
           rel="stylesheet"
@@ -17,79 +17,266 @@
           th:href="@{css/style.css}"
           rel="stylesheet"
           media="screen"/>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
-        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-            <form action="/update" method="POST">
-                <h2>User account</h2>
-                <div class="form-group">
-                    <label for="login">Login:</label>
-                    <input type="text" name="login"
-                           class="form-control"
-                           id="login"
-                           placeholder="Enter login"
-                           th:value="${login}">
-                    </input>
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password"
-                           name="password"
-                           class="form-control"
-                           id="pwd"
-                           placeholder="Enter password"
-                           value="">
-                    </input>
-                </div>
-                <div class="form-group">
-                    <label for="role">Roles:</label>
-                    <input readonly="true"
-                           type="text"
-                           name="role"
-                           class="form-control"
-                           id="role"
-                           th:value="${roles}">
-                    </input>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email"
-                           name="email"
-                           class="form-control"
-                           id="email"
-                           placeholder="Enter email"
-                           th:value="${email}">
-                    </input>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone:</label>
-                    <input type="text"
-                           name="phone"
-                           class="form-control"
-                           id="phone"
-                           placeholder="Enter phone number"
-                           th:value="${phone}">
-                    </input>
-                </div>
-                <button type="submit"
-                        value="Update"
-                        class="btn btn-primary">Update</button>
-            </form>
-            <form action="/logout"
-                  method="post">
-                <input type="hidden"
-                       th:name="${_csrf.parameterName}"
-                       th:value="${_csrf.token}"/>
-                <button type="submit"
-                        value="logout"
-                        class="btn btn-link">Logout</button>
-            </form>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Регистратор документов</a>
         </div>
-        <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="wd-orders.html"><span class="glyphicon glyphicon-bullhorn"></span> Персонал</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-barcode"></span> Склад</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> Иванов Иван Иванович<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Українська</a></li>
+                            <li><a href="#">Російська</a></li>
+                            <li><a href="#">Англійська</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Выход</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#section2">Приём на работу</a></li>
+                <li><a href="#section2">Назначение на должность</a></li>
+                <li><a href="#section2">Назначение оклада</a></li>
+                <li><a href="#section2">Назначение надбавки</a></li>
+                <li><a href="#section2">Увольнение</a></li>
+                <li class="active"><a href="#section1">Отпуск</a></li>
+                <li><a href="#section2">Больничный</a></li>
+                <li><a href="#section3">Премия</a></li>
+                <li><a href="#section3">Командировка</a></li>
+            </ul><br></br>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Поиск документа"></input>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Таб.№</th>
+                        <th>Фамилия И.О.</th>
+                        <th>Должность</th>
+                        <th>Начало</th>
+                        <th>Конец</th>
+                        <th>Дней</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lorem</td>
+                        <td>ipsum</td>
+                        <td>dolor</td>
+                        <td>sit</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>amet</td>
+                        <td>consectetur</td>
+                        <td>adipiscing</td>
+                        <td>elit</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Integer</td>
+                        <td>nec</td>
+                        <td>odio</td>
+                        <td>Praesent</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>libero</td>
+                        <td>Sed</td>
+                        <td>cursus</td>
+                        <td>ante</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>dapibus</td>
+                        <td>diam</td>
+                        <td>Sed</td>
+                        <td>nisi</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Nulla</td>
+                        <td>quis</td>
+                        <td>sem</td>
+                        <td>at</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>nibh</td>
+                        <td>elementum</td>
+                        <td>imperdiet</td>
+                        <td>Duis</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>sagittis</td>
+                        <td>ipsum</td>
+                        <td>Praesent</td>
+                        <td>mauris</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Fusce</td>
+                        <td>nec</td>
+                        <td>tellus</td>
+                        <td>sed</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>augue</td>
+                        <td>semper</td>
+                        <td>porta</td>
+                        <td>Mauris</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>massa</td>
+                        <td>Vestibulum</td>
+                        <td>lacinia</td>
+                        <td>arcu</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>eget</td>
+                        <td>nulla</td>
+                        <td>Class</td>
+                        <td>aptent</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>taciti</td>
+                        <td>sociosqu</td>
+                        <td>ad</td>
+                        <td>litora</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>torquent</td>
+                        <td>per</td>
+                        <td>conubia</td>
+                        <td>nostra</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>per</td>
+                        <td>inceptos</td>
+                        <td>himenaeos</td>
+                        <td>Curabitur</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>sodales</td>
+                        <td>ligula</td>
+                        <td>in</td>
+                        <td>libero</td>
+                        <td>24</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <ul class="pagination">
+                    <li><a href="#">&larr;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&rarr;</a></li>
+                </ul>
+
+            </div>
+
+        </div>
     </div>
 </div>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a href="http://www.intelserv.com/about-company/about-company">
+                    © 2017 Intellect-Service
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Справка</a></li>
+            <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A">YouTube</a></li>
+            <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389">Facebook</a></li>
+            <li><a href="http://twitter.com/ISPRO7">Twitter</a></li>
+            <li><a href="http://www.linkedin.com/companies/intelligenceservice">LinkedIn</a></li>
+            <li><a href="https://plus.google.com/u/0/+Intelserv_Kiev">Google+</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+
 </body>
 </html>

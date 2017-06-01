@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        // If you are only creating a service that is used by non-browser clients, you will likely want to disable CSRF protection.
+        // If you are only creating a service that is used by non-browser clients,
+        // you will likely want to disable CSRF protection.
         // http.csrf().disable();
 
         // authorize requests
