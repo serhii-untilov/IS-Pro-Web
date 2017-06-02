@@ -2,17 +2,16 @@
 <!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0"/>
-    <title>Регистратор документов</title>
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
-          rel="stylesheet"
-          media="screen"/>
+    <title>ИС-Про</title>
+    <link rel="stylesheet" media="screen"
+          href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
     <link href="../static/css/style.css"
           th:href="@{css/style.css}"
           rel="stylesheet"
@@ -40,19 +39,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Регистратор документов</a>
+            <a class="navbar-brand" href="#">Персонал</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="wd-orders.html"><span class="glyphicon glyphicon-bullhorn"></span> Персонал</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-barcode"></span> Склад</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-list"></span> Штат</a></li>
+                <li class="active"><a href="wd-orders.html"><span class="glyphicon glyphicon-paperclip"></span> Кадры</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> Зарплата</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="dropdown">
                         <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span> Иванов Иван Иванович<span class="caret"></span>
+                            <span class="glyphicon glyphicon-user"></span><span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#">Українська</a></li>
@@ -256,27 +256,42 @@
 </div>
 
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-left">
-            <li>
-                <a href="http://www.intelserv.com/about-company/about-company">
-                    © 2017 Intellect-Service
-                </a>
-            </li>
-        </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Справка</a></li>
-            <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A">YouTube</a></li>
-            <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389">Facebook</a></li>
-            <li><a href="http://twitter.com/ISPRO7">Twitter</a></li>
-            <li><a href="http://www.linkedin.com/companies/intelligenceservice">LinkedIn</a></li>
-            <li><a href="https://plus.google.com/u/0/+Intelserv_Kiev">Google+</a></li>
+    <ul class="nav navbar-nav">
+        <li><a href="#">Бухгалтерский учёт</a></li>
+        <li><a href="#">Финансовые расчёты</a></li>
+        <li><a href="#">Основные средства</a></li>
+        <li><a href="#">Логистика</a></li>
+        <li><a href="#">Автотранспорт</a></li>
+        <li><a href="#">Персонал</a></li>
+        <li><a href="#">Образование</a></li>
+        <li><a href="#">Производство</a></li>
+        <li><a href="#">Планирование и анализ</a></li>
+        <li><a href="#">Клиенты</a></li>
+        <li><a href="#">Коммунальные услуги</a></li>
+    </ul>
 
-        </ul>
-    </div>
+
+    <div class="clearfix"></div>
+
+    <ul class="nav navbar-nav">
+        <li><a href="#">Справочники</a></li>
+        <li><a href="#">Сервис</a></li>
+        <li><a href="#">Адмнинистрирование</a></li>
+        <li><a href="#">Справка</a></li>
+    </ul>
+
+    <div class="clearfix"></div>
+
+    <ul class="nav navbar-nav">
+        <li><a href="http://www.intelserv.com/about-company/about-company">Интеллект-Сервис</a></li>
+        <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A">YouTube</a></li>
+        <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389">Facebook</a></li>
+        <li><a href="http://twitter.com/ISPRO7">Twitter</a></li>
+        <li><a href="http://www.linkedin.com/companies/intelligenceservice">LinkedIn</a></li>
+        <li><a href="https://plus.google.com/u/0/+Intelserv_Kiev">Google+</a></li>
+    </ul>
 </nav>
-
 
 </body>
 </html>

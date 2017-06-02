@@ -1,3 +1,4 @@
+/*
 body {
     background-color: #cccccc;
     font-family: arial,helvetica,sans-serif;
@@ -17,3 +18,5 @@ label {
 .top-one {
     margin-top: 1cm;
 }
+*/
+.top-buffer { margin-top:20px; }
