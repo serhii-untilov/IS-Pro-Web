@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"/>
     <title>Login</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" media="screen"
-          href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
-          th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             th:href="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
-<!--
-    <link rel="stylesheet" media="screen"
-          href="../static/css/style.css"
-          th:href="@{css/style.css}"/>
--->
+
+    <link href="../static/css/style.css"
+          th:href="@{css/style.css}"
+          rel="stylesheet"
+          media="screen"/>
 
 </head>
 <body>
@@ -26,42 +29,42 @@
         <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
         <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
             <form class="form" action="/j_spring_security_check" method="POST">
-                <h2>Logon</h2>
-                <div th:if="${param.containsKey('error')}"
-                     class="alert alert-danger">
-                    <strong>Warning!</strong> Wrong login or password.
+                <h2 th:text="#{application.name}">ApplicationName</h2>
+                <h3 th:text="#{sign.in}">Sign In</h3>
+                <div th:if="${param.containsKey('error')}" class="alert alert-danger" th:text="#{bad.password}">
+                    Warning! Wrong login or password.
                 </div>
                 <div th:if="${param.containsKey('logout')}"
-                     class="alert alert-info">
-                    <strong>Bye!</strong> See you soon.
+                     class="alert alert-info"
+                     th:text="#{bye}">
+                    Bye! See you soon.
                 </div>
                 <div class="form-group">
-                    <label for="login">Login:</label>
+                    <label for="login" th:text="#{user.name}">Login:</label>
                     <input type="text"
                            class="form-control"
                            name="j_login" id="login"
-                           placeholder="Enter login"/>
+                           th:placeholder="#{user.name.placeholder}" placeholder="Enter login"/>
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Password:</label>
+                    <label for="pwd" th:text="#{user.password}">Password</label>
                     <input type="password"
                            class="form-control"
                            name="j_password"
                            id="pwd"
-                           placeholder="Enter password"/>
+                           th:placeholder="#{user.password.placeholder}" placeholder="Enter password"/>
                 </div>
 
                 <button type="submit"
-                        class="btn btn-primary">Login</button>
+                        class="btn btn-primary" th:text="#{login}">Login</button>
 
                 <div class="dropdown pull-right">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" th:text="#{lang.change}">
                         Language<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Українська</a></li>
-                        <li><a href="#">Російська</a></li>
-                        <li><a href="#">Англійська</a></li>
+                        <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                        <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
                     </ul>
                 </div>
 
