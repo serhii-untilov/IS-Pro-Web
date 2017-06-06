@@ -21,18 +21,6 @@
           th:href="@{css/style.css}"
           rel="stylesheet"
           media="screen"/>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#locales").change(function () {
-                var selectedOption = $('#locales').val();
-                if (selectedOption != ''){
-                    window.location.replace('?lang=' + selectedOption);
-                }
-            });
-        });
-    </script>
-
 </head>
 <body>
 
@@ -75,21 +63,22 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <div class="dropdown">
-                                <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Українська</a></li>
-                                    <li><a href="#">Російська</a></li>
-                                    <li><a href="#">Англійська</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Выход</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+
+                <form  method="POST">
+
+                    <div class="dropdown">
+                        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                            <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/logout" method="POST">Выход</a></li>
+                        </ul>
+                    </div>
+
+                </form>
             </ul>
+
         </div>
     </div>
 </nav>
