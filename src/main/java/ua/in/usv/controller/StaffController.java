@@ -1,42 +1,31 @@
 package ua.in.usv.controller;
 
-import ua.in.usv.entity.root.CustomUser;
-import ua.in.usv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ua.in.usv.entity.root.CustomUser;
+import ua.in.usv.service.UserService;
 
 @Controller
-public class HomeController {
+public class StaffController {
 
     private final UserService userService;
 
     @Autowired
-    public HomeController(UserService userService) {
+    public StaffController(UserService userService) {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    public String index(Model model){
-        //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    @RequestMapping("/staff/index")
+    public String index(Model model) {
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
-
         CustomUser customUser = userService.findByLogin(login);
 
         model.addAttribute("login", login);
         model.addAttribute("name", customUser.getName());
 
-        return "home/index";
-    }
-
-    @RequestMapping("/unauthorized")
-    public String unauthorized(Model model){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("login", user.getUsername());
-        return "system/unauthorized";
+        return "staff/index";
     }
 }
-

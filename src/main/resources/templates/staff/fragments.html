@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<nav class="navbar navbar-default" th:fragment="top-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Персонал</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list"></span> Штатное расписание</a></li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Кадры</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> Зарплата</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div class="dropdown">
+                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
+                        <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                        <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

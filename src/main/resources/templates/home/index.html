@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="common/fragments :: header">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title th:text="#{application.name}">IS-Pro</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
+    <link rel="stylesheet" media="screen"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            th:href="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" media="screen"
+          href="../../static/css/style.css"
+          th:href="@{css/style.css}"/>
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Наименование предприятия</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div class="dropdown">
+                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
+                        <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                        <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <h2>ИС-Про</h2>
+    <h4>система управления предприятием</h4>
+    <br/>
+    <div class="row">
+        <div class="col-sm-4">
+            <br/>
+            <span class="glyphicon glyphicon-book"></span>
+            <h4>БУХГАЛТЕРСКИЙ И НАЛОГОВЫЙ УЧЁТ</h4>
+            <a href="#">Главная книга</a><br/>
+            <a href="#">Книга покупок и продаж</a>
+        </div>
+        <div class="col-sm-4">
+            <br/>
+            <span class="glyphicon glyphicon-bookmark"></span>
+            <h4>ФИНАНСОВЫЕ РАСЧЁТЫ</h4>
+            <a href="#">Денежные средства</a><br/>
+            <a href="#">Договора</a><br/>
+            <a href="#">Расчёты с контрагентами</a>
+        </div>
+        <div class="col-sm-4">
+            <br/>
+            <span class="glyphicon glyphicon-barcode"></span>
+            <h4>ЛОГИСТИКА</h4>
+            <a href="#">Запасы</a>
+            <a href="#">Закупки</a><br/>
+            <a href="#">Сбыт</a><br/>
+            <a href="#">Экспедиция</a>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-tags"></span>
+            <h4>РЕСУРСЫ</h4>
+            <a href="#">Основные средства</a><br/>
+            <a href="#">Автотранспорт</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-user"></span>
+            <h4>ПЕРСОНАЛ</h4>
+            <a href="#">Штатное расписание</a><br/>
+            <a href="/staff/index">Кадры</a><br/>
+            <a href="#">Заработная плата</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-ok"></span>
+            <h4>ОБРАЗОВАНИЕ</h4>
+            <a href="#">Расчёты со студентами</a><br/>
+            <a href="#">Родительская плата</a><br/>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-tint"></span>
+            <h4>ПРОИЗВОДСТВО</h4>
+            <a href="#">Планирование</a><br/>
+            <a href="#">Управление</a><br/>
+            <a href="#">Калькуляция затрат</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-briefcase"></span>
+            <h4>ФИНАНСОВОЕ ПЛАНИРОВАНИЕ И АНАЛИЗ</h4>
+            <a href="#">План поступлений</a><br/>
+            <a href="#">Планирование продаж</a><br/>
+            <a href="#">Смета</a><br/>
+            <a href="#">Аналитика</a><br/>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-leaf"></span>
+            <h4>КЛИЕНТЫ</h4>
+            <a href="#">Проекты</a><br/>
+            <a href="#">События</a><br/>
+            <a href="#">Задачи</a><br/>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-tasks"></span>
+            <h4>КОММУНАЛЬНЫЕ УСЛУГИ</h4>
+            <a href="#">Лицевые счета</a><br/>
+            <a href="#">Показания счётчиков</a><br/>
+            <a href="#">Оплата</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-asterisk"></span>
+            <h4>СЕРВИС</h4>
+            <a href="#">Закрытие года</a><br/>
+            <a href="#">Импорт</a><br/>
+            <a href="#">Обновление</a><br/>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-cog"></span>
+            <h4>АДМИНИСТРИРОВАНИЕ</h4>
+            <a href="#">Пользователи</a><br/>
+            <a href="#">Резервное копирование</a><br/>
+            <a href="#">Рассылка сообщений</a><br/>
+        </div>
+    </div>
+</div>
+
+<br/>
+<br/>
+<div class="navbar navbar-default" th:replace="common/fragments :: bottom-navbar"></div>
+
+</body>
+</html>

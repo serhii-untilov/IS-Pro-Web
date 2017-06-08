@@ -1,85 +1,57 @@
 <!DOCTYPE html>
 <!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0"/>
-    <title>ИС-Про</title>
+<head lang="en" th:fragment="header">
 
-    <link rel="stylesheet" media="screen"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title th:text="#{application.name}">IS-Pro</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 
+    <link rel="stylesheet" media="screen"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            th:href="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
+            th:href="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
-    <link href="../static/css/style.css"
-          th:href="@{css/style.css}"
-          rel="stylesheet"
-          media="screen"/>
+    <link rel="stylesheet" media="screen"
+          href="../static/css/style.css"
+          th:href="@{css/style.css}"/>
+
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" th:fragment="top-navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-
-            <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Персонал<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Бухгалтерский учёт</a></li>
-                <li><a href="#">Финансовые расчёты</a></li>
-                <li><a href="#">Основные средства</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Логистика</a></li>
-                <li><a href="#">Автотранспорт</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Персонал</a></li>
-                <li><a href="#">Образование</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Производство</a></li>
-                <li><a href="#">Планирование и анализ</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Клиенты</a></li>
-                <li><a href="#">Коммунальные услуги</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Справочники</a></li>
-                <li><a href="#">Сервис</a></li>
-                <li><a href="#">Адмнинистрирование</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Справка</a></li>
-            </ul>
+            <a class="navbar-brand" href="#">Подсистема</a>
         </div>
-
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-list"></span> Штат</a></li>
-                <li class="active"><a href="wd-orders.html"><span class="glyphicon glyphicon-paperclip"></span> Кадры</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> Зарплата</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-
-
-                <form  method="POST">
-
-                    <div class="dropdown">
-                        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
-                            <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/logout" method="POST">Выход</a></li>
-                        </ul>
-                    </div>
-
-                </form>
-            </ul>
-
-        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list"></span> Раздел 1</a></li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Раздел 2</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> Раздел 3</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div class="dropdown">
+                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
+                        <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                        <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a>
+            </li>
+        </ul>
     </div>
 </nav>
 
@@ -88,15 +60,20 @@
     <div class="row content">
         <div class="col-sm-3 sidenav">
             <ul class="nav nav-pills nav-stacked">
+                <li><a href="#section2">Працівники</a></li>
+                <li class="divider"></li>
                 <li><a href="#section2">Приём на работу</a></li>
                 <li><a href="#section2">Назначение на должность</a></li>
                 <li><a href="#section2">Назначение оклада</a></li>
                 <li><a href="#section2">Назначение надбавки</a></li>
-                <li><a href="#section2">Увольнение</a></li>
+                <li class="divider"></li>
+                <li><a href="#section3">Премия</a></li>
+                <li class="divider"></li>
                 <li class="active"><a href="#section1">Отпуск</a></li>
                 <li><a href="#section2">Больничный</a></li>
-                <li><a href="#section3">Премия</a></li>
                 <li><a href="#section3">Командировка</a></li>
+                <li class="divider"></li>
+                <li><a href="#section2">Увольнение</a></li>
             </ul><br></br>
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Поиск документа"></input>
@@ -106,6 +83,7 @@
                     </button>
                 </span>
             </div>
+            <br></br>
         </div>
 
         <div class="col-sm-9">
@@ -270,20 +248,18 @@
 </div>
 
 
-
-<div class="navbar navbar-default">
-        <div class="col-sm-10">
-            <ul class="nav navbar-nav">
-                <li><a href="http://www.intelserv.com/about-company/about-company">Интеллект-Сервис</a></li>
-                <li><a href="http://www.intelserv.com/allprograms/is-pro">ИС-Про</a></li>
-                <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A">YouTube</a></li>
-                <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389">Facebook</a></li>
-                <li><a href="http://twitter.com/ISPRO7">Twitter</a></li>
-                <li><a href="http://www.linkedin.com/companies/intelligenceservice">LinkedIn</a></li>
-                <li><a href="https://plus.google.com/u/0/+Intelserv_Kiev">Google+</a></li>
-            </ul>
-        </div>
+<div class="navbar navbar-default" th:fragment="bottom-navbar">
+    <div class="col-sm-10">
+        <ul class="nav navbar-nav">
+            <li><a href="http://www.intelserv.com/about-company/about-company" target="_blank">Интеллект-Сервис</a></li>
+            <li><a href="http://www.intelserv.com/allprograms/is-pro" target="_blank">ИС-Про</a></li>
+            <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A" target="_blank">YouTube</a></li>
+            <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389" target="_blank">Facebook</a></li>
+            <li><a href="http://twitter.com/ISPRO7" target="_blank">Twitter</a></li>
+            <li><a href="http://www.linkedin.com/companies/intelligenceservice" target="_blank">LinkedIn</a></li>
+            <li><a href="https://plus.google.com/u/0/+Intelserv_Kiev" target="_blank">Google+</a></li>
+        </ul>
+    </div>
 </div>
-
 </body>
 </html>

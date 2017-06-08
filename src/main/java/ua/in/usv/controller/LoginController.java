@@ -18,6 +18,6 @@ public class LoginController {
         logger.info("loginPageConroller");
 
         model.addAttribute("logout", logout);
-        return "login";
+        return "system/login";
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -36,10 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // authorize requests
         http.authorizeRequests()
-                .antMatchers("/").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/", "/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/register").permitAll()
-                //.antMatchers("/person").permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/login?error")
                 // login configuration
@@ -52,10 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                 // logout configuration
                 .and().logout()
-                        .logoutUrl("/logout")
+                        //.logoutUrl("/logout")
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .permitAll();
+
     }
 }
