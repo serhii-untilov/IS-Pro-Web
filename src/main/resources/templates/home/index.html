@@ -20,6 +20,12 @@
     <link rel="stylesheet" media="screen"
           href="../../static/css/style.css"
           th:href="@{css/style.css}"/>
+<style>
+    .large-font {
+        font-size: 18pt;
+    }
+</style>
+
 </head>
 
 <body>
@@ -29,22 +35,19 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Наименование предприятия</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <div class="dropdown">
-                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
-                        <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
-                        <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a>
-            </li>
+        <ul class="nav navbar-nav navbar-right" th:replace="common/fragments :: user-menu">
+            <div class="dropdown">
+                <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
+                    <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                    <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout" th:text="#{logout}">Logout</a></li>
+                </ul>
+            </div>
         </ul>
     </div>
 </nav>
@@ -52,26 +55,30 @@
 <div class="container-fluid text-center">
     <h2>ИС-Про</h2>
     <h4>система управления предприятием</h4>
+
     <br/>
     <div class="row">
+
         <div class="col-sm-4">
             <br/>
-            <span class="glyphicon glyphicon-book"></span>
+            <span class="glyphicon glyphicon-book large-font"></span>
             <h4>БУХГАЛТЕРСКИЙ И НАЛОГОВЫЙ УЧЁТ</h4>
             <a href="#">Главная книга</a><br/>
             <a href="#">Книга покупок и продаж</a>
         </div>
+
         <div class="col-sm-4">
             <br/>
-            <span class="glyphicon glyphicon-bookmark"></span>
+            <span class="glyphicon glyphicon-stats large-font"></span>
             <h4>ФИНАНСОВЫЕ РАСЧЁТЫ</h4>
             <a href="#">Денежные средства</a><br/>
             <a href="#">Договора</a><br/>
             <a href="#">Расчёты с контрагентами</a>
         </div>
+
         <div class="col-sm-4">
             <br/>
-            <span class="glyphicon glyphicon-barcode"></span>
+            <span class="glyphicon glyphicon-barcode large-font"></span>
             <h4>ЛОГИСТИКА</h4>
             <a href="#">Запасы</a>
             <a href="#">Закупки</a><br/>
@@ -79,71 +86,86 @@
             <a href="#">Экспедиция</a>
         </div>
     </div>
+
     <br/>
+
     <div class="row">
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-tags"></span>
+            <span class="glyphicon glyphicon-tags large-font"></span>
             <h4>РЕСУРСЫ</h4>
             <a href="#">Основные средства</a><br/>
             <a href="#">Автотранспорт</a>
         </div>
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-user"></span>
+            <span class="glyphicon glyphicon-user large-font"></span>
             <h4>ПЕРСОНАЛ</h4>
             <a href="#">Штатное расписание</a><br/>
             <a href="/staff/index">Кадры</a><br/>
             <a href="#">Заработная плата</a>
         </div>
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-ok"></span>
+            <span class="glyphicon glyphicon-leaf large-font"></span>
             <h4>ОБРАЗОВАНИЕ</h4>
             <a href="#">Расчёты со студентами</a><br/>
             <a href="#">Родительская плата</a><br/>
         </div>
     </div>
+
     <br/>
+
     <div class="row">
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-tint"></span>
+            <span class="glyphicon glyphicon-tint large-font"></span>
             <h4>ПРОИЗВОДСТВО</h4>
             <a href="#">Планирование</a><br/>
             <a href="#">Управление</a><br/>
             <a href="#">Калькуляция затрат</a>
         </div>
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-briefcase"></span>
+            <span class="glyphicon glyphicon-briefcase large-font"></span>
             <h4>ФИНАНСОВОЕ ПЛАНИРОВАНИЕ И АНАЛИЗ</h4>
             <a href="#">План поступлений</a><br/>
             <a href="#">Планирование продаж</a><br/>
             <a href="#">Смета</a><br/>
             <a href="#">Аналитика</a><br/>
         </div>
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-leaf"></span>
+            <span class="glyphicon glyphicon-globe large-font"></span>
             <h4>КЛИЕНТЫ</h4>
             <a href="#">Проекты</a><br/>
             <a href="#">События</a><br/>
             <a href="#">Задачи</a><br/>
         </div>
     </div>
+
     <br/>
+
     <div class="row">
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-tasks"></span>
+            <span class="glyphicon glyphicon-tasks large-font"></span>
             <h4>КОММУНАЛЬНЫЕ УСЛУГИ</h4>
             <a href="#">Лицевые счета</a><br/>
             <a href="#">Показания счётчиков</a><br/>
             <a href="#">Оплата</a>
         </div>
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-asterisk"></span>
+            <span class="glyphicon glyphicon-asterisk large-font"></span>
             <h4>СЕРВИС</h4>
             <a href="#">Закрытие года</a><br/>
             <a href="#">Импорт</a><br/>
             <a href="#">Обновление</a><br/>
         </div>
+
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-cog"></span>
+            <span class="glyphicon glyphicon-cog large-font"></span>
             <h4>АДМИНИСТРИРОВАНИЕ</h4>
             <a href="#">Пользователи</a><br/>
             <a href="#">Резервное копирование</a><br/>

@@ -21,6 +21,13 @@
           href="../static/css/style.css"
           th:href="@{css/style.css}"/>
 
+    <style>
+        .large-font {
+            font-size: 18pt;
+            <!--color: #8A0829; -->
+        }
+    </style>
+
 </head>
 <body>
 
@@ -35,22 +42,19 @@
             <li class="active"><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Раздел 2</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> Раздел 3</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <div class="dropdown">
-                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
-                        <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
-                        <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a>
-            </li>
+        <ul class="nav navbar-nav navbar-right" th:fragment="user-menu">
+            <div class="dropdown">
+                <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
+                    <li><a href="?lang=" th:text="#{lang.uk}">Українська</a></li>
+                    <li><a href="?lang=ru" th:text="#{lang.ru}">Русский</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout" th:text="#{logout}">Logout</a></li>
+                </ul>
+            </div>
         </ul>
     </div>
 </nav>
