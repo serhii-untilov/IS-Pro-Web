@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="common/fragments :: header">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>IS-Pro</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" media="screen" href="../static/css/style.css"/>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default" th:replace="personnel/fragments :: top-navbar"/>
+
+<div class="container-fluid">
+
+    <div class="row content">
+
+        <div class="col-sm-3 sidenav" th:replace="personnel/fragments :: left-navbar"/>
+
+        <div class="col-sm-9">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Таб.№</th>
+                        <th>Фамилия И.О.</th>
+                        <th>Должность</th>
+                        <th>Начало</th>
+                        <th>Конец</th>
+                        <th>Дней</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lorem</td>
+                        <td>ipsum</td>
+                        <td>dolor</td>
+                        <td>sit</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>amet</td>
+                        <td>consectetur</td>
+                        <td>adipiscing</td>
+                        <td>elit</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Integer</td>
+                        <td>nec</td>
+                        <td>odio</td>
+                        <td>Praesent</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>libero</td>
+                        <td>Sed</td>
+                        <td>cursus</td>
+                        <td>ante</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>dapibus</td>
+                        <td>diam</td>
+                        <td>Sed</td>
+                        <td>nisi</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Nulla</td>
+                        <td>quis</td>
+                        <td>sem</td>
+                        <td>at</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>nibh</td>
+                        <td>elementum</td>
+                        <td>imperdiet</td>
+                        <td>Duis</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>sagittis</td>
+                        <td>ipsum</td>
+                        <td>Praesent</td>
+                        <td>mauris</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Fusce</td>
+                        <td>nec</td>
+                        <td>tellus</td>
+                        <td>sed</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>augue</td>
+                        <td>semper</td>
+                        <td>porta</td>
+                        <td>Mauris</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>massa</td>
+                        <td>Vestibulum</td>
+                        <td>lacinia</td>
+                        <td>arcu</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>eget</td>
+                        <td>nulla</td>
+                        <td>Class</td>
+                        <td>aptent</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>taciti</td>
+                        <td>sociosqu</td>
+                        <td>ad</td>
+                        <td>litora</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>torquent</td>
+                        <td>per</td>
+                        <td>conubia</td>
+                        <td>nostra</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>per</td>
+                        <td>inceptos</td>
+                        <td>himenaeos</td>
+                        <td>Curabitur</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>sodales</td>
+                        <td>ligula</td>
+                        <td>in</td>
+                        <td>libero</td>
+                        <td>24</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <ul class="pagination">
+                    <li><a href="#">&larr;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&rarr;</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-default" th:replace="common/fragments :: bottom-navbar"></div>
+
+</body>
+</html>

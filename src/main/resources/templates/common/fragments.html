@@ -42,10 +42,23 @@
             <li class="active"><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Раздел 2</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> Раздел 3</a></li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-right" th:fragment="company-menu">
+            <li>
+                <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <nbsp/>
+                    <span th:text="${company_name}"></span>
+                </a>
+            </li>
+        </ul>
+
         <ul class="nav navbar-nav navbar-right" th:fragment="user-menu">
-            <div class="dropdown">
-                <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <span class="glyphicon glyphicon-user"></span>
+                    <nbsp/>
+                    <span th:text="${user_name}"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header" th:text="#{lang.change}">Choose the language</li>
@@ -54,208 +67,16 @@
                     <li class="divider"></li>
                     <li><a href="/logout" th:text="#{logout}">Logout</a></li>
                 </ul>
-            </div>
+            </li>
         </ul>
     </div>
 </nav>
-
-<div class="container-fluid">
-
-    <div class="row content">
-        <div class="col-sm-3 sidenav">
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="#section2">Працівники</a></li>
-                <li class="divider"></li>
-                <li><a href="#section2">Приём на работу</a></li>
-                <li><a href="#section2">Назначение на должность</a></li>
-                <li><a href="#section2">Назначение оклада</a></li>
-                <li><a href="#section2">Назначение надбавки</a></li>
-                <li class="divider"></li>
-                <li><a href="#section3">Премия</a></li>
-                <li class="divider"></li>
-                <li class="active"><a href="#section1">Отпуск</a></li>
-                <li><a href="#section2">Больничный</a></li>
-                <li><a href="#section3">Командировка</a></li>
-                <li class="divider"></li>
-                <li><a href="#section2">Увольнение</a></li>
-            </ul><br></br>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Поиск документа"></input>
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
-            <br></br>
-        </div>
-
-        <div class="col-sm-9">
-
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Таб.№</th>
-                        <th>Фамилия И.О.</th>
-                        <th>Должность</th>
-                        <th>Начало</th>
-                        <th>Конец</th>
-                        <th>Дней</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>amet</td>
-                        <td>consectetur</td>
-                        <td>adipiscing</td>
-                        <td>elit</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Integer</td>
-                        <td>nec</td>
-                        <td>odio</td>
-                        <td>Praesent</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>libero</td>
-                        <td>Sed</td>
-                        <td>cursus</td>
-                        <td>ante</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>dapibus</td>
-                        <td>diam</td>
-                        <td>Sed</td>
-                        <td>nisi</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Nulla</td>
-                        <td>quis</td>
-                        <td>sem</td>
-                        <td>at</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>nibh</td>
-                        <td>elementum</td>
-                        <td>imperdiet</td>
-                        <td>Duis</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>sagittis</td>
-                        <td>ipsum</td>
-                        <td>Praesent</td>
-                        <td>mauris</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Fusce</td>
-                        <td>nec</td>
-                        <td>tellus</td>
-                        <td>sed</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>augue</td>
-                        <td>semper</td>
-                        <td>porta</td>
-                        <td>Mauris</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>massa</td>
-                        <td>Vestibulum</td>
-                        <td>lacinia</td>
-                        <td>arcu</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>eget</td>
-                        <td>nulla</td>
-                        <td>Class</td>
-                        <td>aptent</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>taciti</td>
-                        <td>sociosqu</td>
-                        <td>ad</td>
-                        <td>litora</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>torquent</td>
-                        <td>per</td>
-                        <td>conubia</td>
-                        <td>nostra</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>per</td>
-                        <td>inceptos</td>
-                        <td>himenaeos</td>
-                        <td>Curabitur</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td>sodales</td>
-                        <td>ligula</td>
-                        <td>in</td>
-                        <td>libero</td>
-                        <td>24</td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
-                <ul class="pagination">
-                    <li><a href="#">&larr;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&rarr;</a></li>
-                </ul>
-
-            </div>
-
-        </div>
-    </div>
-</div>
 
 
 <div class="navbar navbar-default" th:fragment="bottom-navbar">
     <div class="col-sm-10">
         <ul class="nav navbar-nav">
-            <li><a href="http://www.intelserv.com/about-company/about-company" target="_blank">Интеллект-Сервис</a></li>
+            <li><a href="http://www.intelserv.com/about-company/about-company" target="_blank">© 2017 Интеллект-Сервис</a></li>
             <li><a href="http://www.intelserv.com/allprograms/is-pro" target="_blank">ИС-Про</a></li>
             <li><a href="https://www.youtube.com/channel/UCGl-YDPdusWLd_iydu5lW2A" target="_blank">YouTube</a></li>
             <li><a href="http://www.facebook.com/pages/Intellekt-Servis/116326488440389" target="_blank">Facebook</a></li>

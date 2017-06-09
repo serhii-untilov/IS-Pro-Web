@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection, JSUnresolvedLibraryURL, HtmlUnknownTarget -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<nav class="navbar navbar-default" th:fragment="top-navbar">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">
+                <span>Кадры</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Учёт персонала</li>
+                <li><a href="/staff/index">Штатное расписание</a></li>
+                <li><a href="/personnel/index">Кадры</a></li>
+                <li><a href="/payroll/index">Зарплата</a></li>
+            </ul>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span>2017 Июнь</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">Учётный период</li>
+                    <li><a href="#">2017 Январь</a></li>
+                    <li><a href="#">2017 Февраль</a></li>
+                    <li><a href="#">2017 Март</a></li>
+                    <li><a href="#">2017 Апрель</a></li>
+                    <li><a href="#">2017 Май</a></li>
+                    <li><a href="#"><strong>2017 Июнь</strong></a></li>
+                    <li><a href="#">2017 Июль</a></li>
+                    <li><a href="#">2017 Август</a></li>
+                    <li><a href="#">2017 Сернябрь</a></li>
+                    <li><a href="#">2017 Октябрь</a></li>
+                    <li><a href="#">2017 Ноябрь</a></li>
+                    <li><a href="#">2017 Декабрь</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right" th:replace="common/fragments :: user-menu"/>
+        <ul class="nav navbar-nav navbar-right" th:replace="common/fragments :: company-menu"/>
+    </div>
+</nav>
+
+<div class="col-sm-3 sidenav" th:fragment="left-navbar">
+    <ul class="nav nav-pills nav-stacked">
+        <li th:class="${page_index_active}"><a href="/personnel/index">Сводная ведомость</a></li>
+        <li th:class="${page_personnel_list_active}"><a href="/personnel/personnel-list">Працівники</a></li>
+        <li class="divider"></li>
+        <li><a href="/personnel/enroll">Приём на работу</a></li>
+        <li><a href="/personnel/appoint">Назначение на должность</a></li>
+        <li><a href="/personnel/salary">Назначение оклада</a></li>
+        <li><a href="/personnel/surcharge">Назначение надбавки</a></li>
+        <li class="divider"></li>
+        <li><a href="/personnel/bonus">Премия</a></li>
+        <li class="divider"></li>
+        <li class="/personnel/vacation"><a href="#section1">Отпуск</a></li>
+        <li><a href="/personnel/sick-leave">Больничный</a></li>
+        <li><a href="/personnel/bussiness-trip">Командировка</a></li>
+        <li class="divider"></li>
+        <li><a href="/personnel/retire">Увольнение</a></li>
+    </ul><br></br>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Поиск документа"></input>
+        <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+    </div>
+    <br></br>
+</div>
+
+
+
+</body>
+</html>

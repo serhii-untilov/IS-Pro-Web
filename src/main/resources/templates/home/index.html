@@ -33,7 +33,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Наименование предприятия</a>
+            <a class="navbar-brand" href="#" th:href="${company_site}" th:text="${company_name}" target="_blank">Наименование предприятия</a>
         </div>
         <ul class="nav navbar-nav navbar-right" th:replace="common/fragments :: user-menu">
             <div class="dropdown">
@@ -102,7 +102,7 @@
             <span class="glyphicon glyphicon-user large-font"></span>
             <h4>ПЕРСОНАЛ</h4>
             <a href="#">Штатное расписание</a><br/>
-            <a href="/staff/index">Кадры</a><br/>
+            <a href="/personnel/index">Кадры</a><br/>
             <a href="#">Заработная плата</a>
         </div>
 
