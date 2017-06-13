@@ -22,11 +22,12 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'1.4.3.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version:'1.4.3.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.4.3.RELEASE'
-    compile group: 'org.projectlombok', name: 'lombok', version:'1.16.12'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version:'1.4.3.RELEASE'
+    compile group: 'org.projectlombok', name: 'lombok', version:'1.16.12'
     compile group: 'com.zaxxer', name: 'HikariCP', version:'2.4.7'
     compile group: 'org.webjars', name: 'bootstrap', version:'3.3.7'
     compile group: 'org.webjars', name: 'jquery', version:'3.1.1'
+
     //runtime group: 'com.h2database', name: 'h2', version:'1.4.193'
     //runtime group: 'org.postgresql', name: 'postgresql', version:'9.4-1201-jdbc41'
     //https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
@@ -37,8 +38,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4
     //compile group: 'com.microsoft.sqlserver', name: 'sqljdbc4', version: '4.0'
 
-    optional "org.springframework.boot:spring-boot-configuration-processor"
-    compileJava.dependsOn(processResources)
+//    optional "org.springframework.boot:spring-boot-configuration-processor"
+//    compileJava.dependsOn(processResources)
 
     // https://mvnrepository.com/artifact/hsqldb/hsqldb
     //compile group: 'hsqldb', name: 'hsqldb', version: '1.8.0.7'
